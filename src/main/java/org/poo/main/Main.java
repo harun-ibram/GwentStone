@@ -3,9 +3,12 @@ package org.poo.main;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.checker.Checker;
 import org.poo.checker.CheckerConstants;
 import org.poo.fileio.Input;
+import org.poo.players.Deck;
+import org.poo.players.Player;
 
 import java.io.File;
 import java.io.IOException;
@@ -86,6 +89,24 @@ public final class Main {
          * output.add(objectNode);
          *
          */
+        Player p1 = new Player();
+        Player p2 = new Player();
+        p1.setNrCardsInDeck(5);
+        p1.setNrDecks(2);
+        Deck deck1p1 = new Deck();
+        Deck deck2p1 = new Deck();
+        Deck[] decks = new Deck[];
+        p1.setDecks(Deck[deck1p1, deck2p1]);
+        ObjectMapper mapper = new ObjectMapper();
+
+        ObjectNode objectNode = mapper.createObjectNode();
+        objectNode.put("hello", "world");
+
+        ArrayNode arrayNode = mapper.createArrayNode();
+        arrayNode.add(objectNode);
+
+        output.add(arrayNode);
+        output.add(objectNode);
 
         ObjectWriter objectWriter = objectMapper.writerWithDefaultPrettyPrinter();
         objectWriter.writeValue(new File(filePath2), output);

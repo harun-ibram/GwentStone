@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="gwent-mvn" />
+        <module name="gwentstone-light" />
       </profile>
     </annotationProcessing>
   </component>

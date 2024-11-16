@@ -1,1 +1,2 @@
-Error: Unable to access jarfile src/checker/checkstyle-8.36.2-all.jar
+Starting audit...
+Audit done.
