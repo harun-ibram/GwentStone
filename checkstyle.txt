@@ -1,2 +1,6 @@
 Starting audit...
+[ERROR] /home/art/oop/GwentStone/./src/main/java/org/poo/main/Main.java:94:29: '5' is a magic number. [MagicNumber]
+[ERROR] /home/art/oop/GwentStone/./src/main/java/org/poo/players/Player.java:14:5: Class 'Player' looks like designed for extension (can be subclassed), but the method 'setDecks' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'Player' final or making the method 'setDecks' static/final/abstract/empty, or adding allowed annotation for the method. [DesignForExtension]
+[ERROR] /home/art/oop/GwentStone/./src/main/java/org/poo/players/Player.java:14:26: Parameter decks should be final. [FinalParameters]
 Audit done.
+Checkstyle ends with 3 errors.

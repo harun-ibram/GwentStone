@@ -1,5 +1,5 @@
-[ [ {
-  "hello" : "world"
-} ], {
-  "hello" : "world"
+[ {
+  "command" : "getPlayerDecks",
+  "playerIdx" : "1",
+  "output" : [ ]
 } ]

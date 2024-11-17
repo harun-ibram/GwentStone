@@ -1,5 +1,14 @@
 package org.poo.cards;
 
-public class Berserker extends Card {
+import lombok.Getter;
+import lombok.Setter;
+import org.poo.fileio.CardInput;
 
+@Getter
+@Setter
+public class Berserker extends Minion {
+
+    public Berserker(CardInput card) {
+        super(card);
+    }
 }

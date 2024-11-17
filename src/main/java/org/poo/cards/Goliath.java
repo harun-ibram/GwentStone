@@ -2,9 +2,9 @@ package org.poo.cards;
 
 import org.poo.fileio.CardInput;
 
-public class Sentinel extends Minion {
+public class Goliath extends Minion {
 
-    public Sentinel(CardInput card) {
+    public Goliath(CardInput card) {
         super(card);
     }
 }

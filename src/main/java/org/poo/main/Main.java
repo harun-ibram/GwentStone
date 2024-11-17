@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -70,7 +71,8 @@ public final class Main {
                 Input.class);
 
         ArrayNode output = objectMapper.createArrayNode();
-
+        Player p1 = new Player(inputData.getPlayerOneDecks(), 1);
+        Player p2 = new Player(inputData.getPlayerTwoDecks(), 2);
         /*
          * TODO Implement your function here
          *
@@ -89,24 +91,8 @@ public final class Main {
          * output.add(objectNode);
          *
          */
-        Player p1 = new Player();
-        Player p2 = new Player();
-        p1.setNrCardsInDeck(5);
-        p1.setNrDecks(2);
-        Deck deck1p1 = new Deck();
-        Deck deck2p1 = new Deck();
-        Deck[] decks = new Deck[];
-        p1.setDecks(Deck[deck1p1, deck2p1]);
-        ObjectMapper mapper = new ObjectMapper();
 
-        ObjectNode objectNode = mapper.createObjectNode();
-        objectNode.put("hello", "world");
 
-        ArrayNode arrayNode = mapper.createArrayNode();
-        arrayNode.add(objectNode);
-
-        output.add(arrayNode);
-        output.add(objectNode);
 
         ObjectWriter objectWriter = objectMapper.writerWithDefaultPrettyPrinter();
         objectWriter.writeValue(new File(filePath2), output);
