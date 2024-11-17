@@ -25,4 +25,27 @@ public class Minion extends GeneralCard{
         coordinates.setX(-1);
         coordinates.setY(-1);
     }
+
+    public void attack(GeneralCard target) {
+
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[\n");
+        for (String color : getColors()) {
+            sb.append(color + ",\n");
+        }
+        sb.delete(sb.length() - 2, sb.length());
+        sb.append("\n]");
+        return "{\n" +
+                "\"mana\":" + getMana() + ",\n" +
+                "\"attackDamage\":" + getAttackDamage() + ",\n" +
+                "\"health\":" + getHealth() + ",\n" +
+                "\"description\":" + getDescription() + ",\n" +
+                "\"colors\":" + sb.toString() + ",\n" +
+                "\"name\": " + getName() +
+                "\n}";
+    }
 }

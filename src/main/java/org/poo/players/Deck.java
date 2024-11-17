@@ -33,4 +33,17 @@ public class Deck {
             this.minions.add(currentMinion);
         }
     }
+
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[\n");
+        for (Minion minion : minions) {
+            sb.append(minion);
+            sb.append(",\n");
+        }
+        sb.delete(sb.length() - 2, sb.length());
+        return sb.toString();
+    }
 }
