@@ -2,13 +2,13 @@ package org.poo.cards;
 
 import org.poo.fileio.CardInput;
 
-public class TheCursedOne extends Minion implements SpecialAbility{
-    public TheCursedOne(CardInput card) {
+public final class TheCursedOne extends Minion implements SpecialAbility {
+    public TheCursedOne(final CardInput card) {
         super(card);
     }
 
     @Override
-    public void useAbility(Minion target) {
+    public void useAbility(final Minion target) {
         //  "Shapeshift"
         int aux = target.getHealth();
         target.setHealth(target.getAttackDamage());

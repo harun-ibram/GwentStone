@@ -2,14 +2,14 @@ package org.poo.cards;
 
 import org.poo.fileio.CardInput;
 
-public class TheRipper extends Minion implements SpecialAbility{
+public final class TheRipper extends Minion implements SpecialAbility {
 
-    public TheRipper(CardInput card) {
+    public TheRipper(final CardInput card) {
         super(card);
     }
 
     @Override
-    public void useAbility(Minion target) {
+    public void useAbility(final Minion target) {
         //  Weak Knees
         target.setAttackDamage(Math.max(target.getAttackDamage() - 2, 0));
     }

@@ -3,12 +3,11 @@ package org.poo.main;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import org.poo.cards.Minion;
 import org.poo.checker.Checker;
 import org.poo.checker.CheckerConstants;
+import org.poo.fileio.GameInput;
 import org.poo.fileio.Input;
-import org.poo.players.Deck;
+import org.poo.game.Game;
 import org.poo.players.Player;
 
 import java.io.File;
@@ -75,33 +74,16 @@ public final class Main {
         Player p1 = new Player(inputData.getPlayerOneDecks(), 1);
         Player p2 = new Player(inputData.getPlayerTwoDecks(), 2);
 
-        ObjectMapper mapper = new ObjectMapper();
-
-        ObjectNode player1Data = mapper.createObjectNode();
-        player1Data.put("playerIdx", p1.getSelfIdx());
-        player1Data.put("nrDecks", p1.getNrDecks());
-        player1Data.put("nrCardsInDeck", p1.getNrCardsInDeck());
-        ArrayNode p1decks = mapper.createArrayNode();
-        for (Deck deck : p1.getDecks()) {
-            ArrayNode currentDeck = mapper.createArrayNode();
-            for (Minion card : deck.getMinions()) {
-                ObjectNode node = mapper.createObjectNode();
-                node.put("mana", card.getMana());
-                node.put("attackDamage", card.getAttackDamage());
-                node.put("health", card.getHealth());
-                node.put("description", card.getDescription());
-                ArrayNode colorArray = mapper.createArrayNode();
-                for (String color : card.getColors()) {
-                    colorArray.add(color);
-                }
-                node.put("colors", colorArray);
-                node.put("name", card.getName());
-                currentDeck.add(node);
-            }
-
-            p1decks.add(currentDeck);
+        for (GameInput gin : inputData.getGames()) {
+            Game currentGame = new Game();
+            currentGame.setP1(p1);
+            currentGame.setP2(p2);
+            currentGame.initGame(gin.getStartGame(), output);
+            currentGame.setActions(gin.getActions());
+            currentGame.executeActions();
         }
-        player1Data.put("decks", p1decks);
+
+
         /*
          * TODO Implement your function here
          *
@@ -120,7 +102,6 @@ public final class Main {
          * output.add(objectNode);
          *
          */
-        output.add(player1Data);
 
 
         ObjectWriter objectWriter = objectMapper.writerWithDefaultPrettyPrinter();

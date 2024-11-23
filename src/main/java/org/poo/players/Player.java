@@ -3,9 +3,10 @@ package org.poo.players;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.poo.cards.Hero;
+import org.poo.cards.Minion;
 import org.poo.fileio.CardInput;
 import org.poo.fileio.DecksInput;
-
 import java.util.ArrayList;
 
 @Getter
@@ -15,8 +16,10 @@ public class Player {
     private int nrCardsInDeck;
     private ArrayList<Deck> decks;
     private int selfIdx;
+    private Hero hero;
+    private ArrayList<Minion> cardsInHand;
 
-    public Player(DecksInput din, int selfIdx) {
+    public Player(final DecksInput din, final int selfIdx) {
         nrDecks = din.getNrDecks();
         nrCardsInDeck = din.getNrCardsInDeck();
         this.selfIdx = selfIdx;
@@ -25,5 +28,10 @@ public class Player {
             Deck currentDeck = new Deck(cardList, nrCardsInDeck, this.selfIdx);
             decks.add(currentDeck);
         }
+        cardsInHand = new ArrayList<>();
+    }
+
+    public void draw(Deck gameDeck) {
+        cardsInHand.add(gameDeck.drawCard());
     }
 }

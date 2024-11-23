@@ -2,14 +2,14 @@ package org.poo.cards;
 
 import org.poo.fileio.CardInput;
 
-public class Disciple extends Minion implements SpecialAbility{
+public final class Disciple extends Minion implements SpecialAbility {
 
-    public Disciple(CardInput card) {
+    public Disciple(final CardInput card) {
         super(card);
     }
 
     @Override
-    public void useAbility(Minion target) {
+    public void useAbility(final Minion target) {
         target.setHealth(target.getHealth() + 2);
     }
 }
