@@ -4,12 +4,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.fileio.ActionsInput;
-import org.poo.fileio.GameInput;
 import org.poo.game.Game;
 
-public class GetPlayerMana extends AbstractAction {
-    public GetPlayerMana(ActionsInput actionsInput, Game game, ArrayNode output) {
-        super(actionsInput, game, output);
+public final class GetPlayerMana extends AbstractAction {
+    public GetPlayerMana(final ActionsInput actionsInput, final Game game, final ArrayNode out) {
+        super(actionsInput, game, out);
     }
 
     @Override

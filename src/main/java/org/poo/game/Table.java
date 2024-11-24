@@ -10,22 +10,26 @@ import java.util.ArrayList;
 
 @Getter
 @Setter
-public class Table {
+public final class Table {
     private static Table instance = null;
-    private static final int cols = 5;
-    private static final int rows = 4;
+    private static final int COLS = 5;
+    private static final int ROWS = 4;
     private static ArrayList<ArrayList<Minion>> table;
 
     private Table() {
 
     }
 
+    /**
+     * Obtain a reference of the table.
+     * @return The Singleton instance of the game table.
+     */
     public static Table getInstance() {
         if (instance == null) {
             instance = new Table();
-            table = new ArrayList<>(4);
-            for (int i = 0; i < 4; i++) {
-                table.add(new ArrayList<>(5));
+            table = new ArrayList<>(ROWS);
+            for (int i = 0; i < ROWS; i++) {
+                table.add(new ArrayList<>(COLS));
             }
         }
         return instance;
@@ -53,7 +57,7 @@ public class Table {
     }
 
     public boolean isRowFull(final int row) {
-        return table.get(row).size() == 5;
+        return table.get(row).size() == COLS;
     }
 
     public ArrayNode getCardsOnTable() {
@@ -78,9 +82,9 @@ public class Table {
     public static void resetTable() {
         if (instance == null) {
             instance = new Table();
-            table = new ArrayList<>(4);
-            for (int i = 0; i < 4; i++) {
-                table.add(new ArrayList<>(5));
+            table = new ArrayList<>(ROWS);
+            for (int i = 0; i < ROWS; i++) {
+                table.add(new ArrayList<>(COLS));
             }
         } else {
             for (ArrayList<Minion> row : table) {
@@ -90,8 +94,9 @@ public class Table {
     }
 
     public static void newRound() {
-        if (instance == null)
+        if (instance == null) {
             return;
+        }
         for (ArrayList<Minion> rows : table) {
             for (Minion minion : rows) {
                 minion.setActed(false);

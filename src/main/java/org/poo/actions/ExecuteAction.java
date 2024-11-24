@@ -1,5 +1,9 @@
 package org.poo.actions;
 
 public interface ExecuteAction {
-    public void executeAction();
+
+    /**
+     * Executes the current card's ability
+     */
+    void executeAction();
 }

@@ -1,0 +1,53 @@
+commit 68dd34275539de1b5213318371f456ac2bd83292
+Author: Harun Ibram <harun.ibram@outlook.com>
+Date:   Sun Nov 24 22:10:17 2024 +0200
+
+    Implement card abilities
+
+commit 8a304f12ceed22e0883ee669432870665f4f2f5e
+Author: Harun Ibram <harun.ibram@outlook.com>
+Date:   Sun Nov 24 21:48:39 2024 +0200
+
+    Implement card attacks
+
+commit d8f147b8f5766186c3a476380b67760099401c35
+Author: Harun Ibram <harun.ibram@outlook.com>
+Date:   Sun Nov 24 18:52:07 2024 +0200
+
+    Implement placing cards
+
+commit 8b55189d2f90a5b2d562fbb8c14c85cff2fe8a01
+Author: Harun Ibram <ibramharun7@gmail.com>
+Date:   Sun Nov 24 16:19:51 2024 +0200
+
+    GetCard commands, PlaceCard
+
+commit 836f9b34babde143bac0352d67b9d8db4e68b9d6
+Author: Harun Ibram <harun.ibram@outlook.com>
+Date:   Sat Nov 23 15:46:14 2024 +0200
+
+    Implement game initialization and beginning
+
+commit 15e81dae691cd9bddf6bfca4cc1ae62c0fae692c
+Author: Harun Ibram <ibramharun7@gmail.com>
+Date:   Sun Nov 17 17:08:09 2024 +0200
+
+    Basic output printing skeleton.
+
+commit 856fec6837bf4c24797faf5133dd33e06afc70ec
+Author: Harun Ibram <ibramharun7@gmail.com>
+Date:   Sun Nov 17 15:08:05 2024 +0200
+
+    Construct Players, Decks and Cards from Input
+
+commit 385ebce6ea5bae3798fb51ed17e35dae01b52005
+Author: Harun Ibram <ibramharun7@gmail.com>
+Date:   Sun Nov 17 01:13:27 2024 +0200
+
+    Outline classes.
+
+commit 5d447d15214c737f38728c34bc56cd974ac7b1f5
+Author: Harun Ibram <ibramharun7@gmail.com>
+Date:   Sat Nov 16 14:26:51 2024 +0200
+
+    Add project skel

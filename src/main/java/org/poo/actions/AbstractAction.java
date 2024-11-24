@@ -24,7 +24,7 @@ public abstract class AbstractAction implements ExecuteAction {
     protected ArrayNode outputArray;
     protected Game state;
 
-    public AbstractAction(final ActionsInput actionsInput, final Game game, final ArrayNode output) {
+    public AbstractAction(final ActionsInput actionsInput, final Game game, final ArrayNode out) {
         command = actionsInput.getCommand();
         handIdx = actionsInput.getHandIdx();
         if (actionsInput.getCardAttacker() != null) {
@@ -40,10 +40,10 @@ public abstract class AbstractAction implements ExecuteAction {
         x = actionsInput.getX();
         y = actionsInput.getY();
         state = game;
-        outputArray = output;
+        outputArray = out;
     }
 
-    protected ObjectNode cardCoordsOutput(final int x, final int y) {
+    protected final ObjectNode cardCoordsOutput(final int cardX, final int cardY) {
         ObjectMapper mapper = new ObjectMapper();
         ObjectNode res = mapper.createObjectNode();
         res.put("x", x);

@@ -76,14 +76,6 @@ public final class Deck {
     }
 
     /**
-     * Removes the requested card from the deck.
-     * @param idx The card to be removed.
-     */
-    public void removeCard(final int idx) {
-        minions.remove(idx);
-    }
-
-    /**
      * Draws the first card from the deck.
      * This operation removes the card from the deck.
      * @return The Minion card at the top of the deck.
@@ -92,6 +84,11 @@ public final class Deck {
         return minions.removeFirst();
     }
 
+
+    /**
+     * Creates the JSON Array from the cards' properties.
+     * @return Array of the cards' JSON form.
+     */
     public ArrayNode prepareOutput() {
         ObjectMapper mapper = new ObjectMapper();
         ArrayNode res = mapper.createArrayNode();

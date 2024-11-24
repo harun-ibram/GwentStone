@@ -7,11 +7,10 @@ import org.poo.fileio.ActionsInput;
 import org.poo.game.Game;
 import org.poo.game.Table;
 
-import javax.swing.*;
 
-public class GetCardAtPosition extends AbstractAction {
-    public GetCardAtPosition(ActionsInput actionsInput, Game game, ArrayNode out) {
-        super(actionsInput, game, out);
+public final class GetCardAtPosition extends AbstractAction {
+    public GetCardAtPosition(final ActionsInput act, final Game game, final ArrayNode out) {
+        super(act, game, out);
     }
 
     @Override

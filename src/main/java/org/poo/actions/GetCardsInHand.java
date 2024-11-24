@@ -9,9 +9,9 @@ import org.poo.game.Game;
 
 import java.util.ArrayList;
 
-public class GetCardsInHand extends AbstractAction {
+public final class GetCardsInHand extends AbstractAction {
 
-    public GetCardsInHand(ActionsInput actionsInput, Game game, ArrayNode out) {
+    public GetCardsInHand(final ActionsInput actionsInput, final Game game, final ArrayNode out) {
         super(actionsInput, game, out);
     }
 

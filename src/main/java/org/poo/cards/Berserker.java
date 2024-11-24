@@ -7,7 +7,7 @@ import org.poo.fileio.CardInput;
 @Getter
 @Setter
 public final class Berserker extends Minion {
-    public Berserker(CardInput card) {
+    public Berserker(final CardInput card) {
         super(card);
     }
 }

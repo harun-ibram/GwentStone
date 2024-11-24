@@ -7,11 +7,11 @@ import org.poo.fileio.ActionsInput;
 import org.poo.game.Game;
 import org.poo.game.Table;
 
-public class GetCardsOnTable extends AbstractAction {
-    Table table = Table.getInstance();
+public final class GetCardsOnTable extends AbstractAction {
+    private Table table = Table.getInstance();
 
-    public GetCardsOnTable(ActionsInput actionsInput, final Game game, ArrayNode output) {
-        super(actionsInput, game, output);
+    public GetCardsOnTable(final ActionsInput actionsInput, final Game game, final ArrayNode out) {
+        super(actionsInput, game, out);
     }
 
     @Override

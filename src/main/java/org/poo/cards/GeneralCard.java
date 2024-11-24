@@ -18,6 +18,11 @@ public abstract class GeneralCard {
     protected ArrayList<String> colors;
     protected String description;
 
+
+    /**
+     * Creates the JSON Object from the card's properties.
+     * @return The current card in JSON form.
+     */
     public ObjectNode prepareOutput() {
         ObjectMapper mapper = new ObjectMapper();
         ObjectNode res = mapper.createObjectNode();

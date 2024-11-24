@@ -206,11 +206,11 @@
 }, {
   "command" : "cardUsesAbility",
   "cardAttacker" : {
-    "x" : 2,
-    "y" : 2
+    "x" : 0,
+    "y" : 0
   },
   "cardAttacked" : {
-    "x" : 1,
+    "x" : 0,
     "y" : 0
   },
   "error" : "Attacked card is not of type 'Tank'."

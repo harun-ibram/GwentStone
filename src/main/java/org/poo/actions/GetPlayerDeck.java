@@ -5,9 +5,8 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.fileio.ActionsInput;
 import org.poo.game.Game;
-import org.poo.players.Deck;
 
-public class GetPlayerDeck extends AbstractAction {
+public final class GetPlayerDeck extends AbstractAction {
 
     public GetPlayerDeck(final ActionsInput actionsInput, final Game g, final ArrayNode out) {
         super(actionsInput, g, out);

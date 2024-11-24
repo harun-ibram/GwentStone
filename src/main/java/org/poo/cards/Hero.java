@@ -7,14 +7,14 @@ import org.poo.fileio.CardInput;
 @Getter
 @Setter
 public final class Hero extends GeneralCard {
-    private final static int startingHP = 30;
+    private final int startingHealth = 30;
 
     public Hero() {
         super();
     }
 
-    public Hero(CardInput playerHero) {
-        health = startingHP;
+    public Hero(final CardInput playerHero) {
+        health = startingHealth;
         mana = playerHero.getMana();
         name = playerHero.getName();
         colors = playerHero.getColors();

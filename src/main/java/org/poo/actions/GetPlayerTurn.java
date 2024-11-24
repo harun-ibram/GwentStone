@@ -6,10 +6,10 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.fileio.ActionsInput;
 import org.poo.game.Game;
 
-public class GetPlayerTurn extends AbstractAction {
+public final class GetPlayerTurn extends AbstractAction {
 
-    public GetPlayerTurn(ActionsInput actionsInput, final Game g, final ArrayNode output) {
-        super(actionsInput, g, output);
+    public GetPlayerTurn(final ActionsInput actionsInput, final Game g, final ArrayNode out) {
+        super(actionsInput, g, out);
     }
 
     @Override

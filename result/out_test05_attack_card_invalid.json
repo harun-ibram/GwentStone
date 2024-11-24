@@ -18,7 +18,7 @@
 }, {
   "command" : "cardUsesAttack",
   "cardAttacker" : {
-    "x" : 2,
+    "x" : 0,
     "y" : 0
   },
   "cardAttacked" : {
@@ -29,22 +29,22 @@
 }, {
   "command" : "cardUsesAttack",
   "cardAttacker" : {
-    "x" : 2,
+    "x" : 0,
     "y" : 0
   },
   "cardAttacked" : {
-    "x" : 1,
+    "x" : 0,
     "y" : 0
   },
   "error" : "Attacker card has already attacked this turn."
 }, {
   "command" : "cardUsesAttack",
   "cardAttacker" : {
-    "x" : 3,
+    "x" : 0,
     "y" : 0
   },
   "cardAttacked" : {
-    "x" : 3,
+    "x" : 0,
     "y" : 0
   },
   "error" : "Attacked card does not belong to the enemy."

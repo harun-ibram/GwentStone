@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.Getter;
 import lombok.Setter;
 import org.poo.fileio.CardInput;
-import org.poo.fileio.Coordinates;
 
 @Setter @Getter
 public class Minion extends GeneralCard {
@@ -16,6 +15,7 @@ public class Minion extends GeneralCard {
     private int x;
     private int y;
     private boolean acted;
+
     public Minion(final CardInput card) {
         mana = card.getMana();
         health = card.getHealth();
@@ -66,7 +66,10 @@ public class Minion extends GeneralCard {
                 + "\n}";
     }
 
-
+    /**
+     * Creates the JSON Object from the card's properties.
+     * @return The current card in JSON form.
+     */
     @Override
     public ObjectNode prepareOutput() {
         ObjectMapper mapper = new ObjectMapper();

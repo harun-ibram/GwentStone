@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 @Getter
 @Setter
-public class Player {
+public final class Player {
     private int nrDecks;
     private int nrCardsInDeck;
     private ArrayList<Deck> decks;
@@ -20,10 +20,10 @@ public class Player {
     private ArrayList<Minion> cardsInHand;
     private int mana;
 
-    public Player(final DecksInput din, final int selfIdx) {
+    public Player(final DecksInput din, final int idx) {
         nrDecks = din.getNrDecks();
         nrCardsInDeck = din.getNrCardsInDeck();
-        this.selfIdx = selfIdx;
+        selfIdx = idx;
         decks = new ArrayList<>();
         for (ArrayList<CardInput> cardList : din.getDecks()) {
             Deck currentDeck = new Deck(cardList, nrCardsInDeck, this.selfIdx);
@@ -33,9 +33,14 @@ public class Player {
         mana = 0;
     }
 
-    public void draw(Deck gameDeck) {
-        if (gameDeck.getMinions().isEmpty())
+    /**\
+     * Draws the first card from the deck and adds it to the player's hand.
+     * @param gameDeck The deck from which the card is drawn.
+     */
+    public void draw(final Deck gameDeck) {
+        if (gameDeck.getMinions().isEmpty()) {
             return;
+        }
         cardsInHand.addLast(gameDeck.drawCard());
     }
 }

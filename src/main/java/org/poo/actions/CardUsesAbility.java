@@ -10,8 +10,8 @@ import org.poo.game.Game;
 import org.poo.game.Table;
 
 
-public class CardUsesAbility extends AbstractAction {
-    public CardUsesAbility(ActionsInput actionsInput, Game game, ArrayNode out) {
+public final class CardUsesAbility extends AbstractAction {
+    public CardUsesAbility(final ActionsInput actionsInput, final Game game, final ArrayNode out) {
         super(actionsInput, game, out);
     }
 
@@ -21,19 +21,25 @@ public class CardUsesAbility extends AbstractAction {
         ObjectMapper mapper = new ObjectMapper();
         ObjectNode res = mapper.createObjectNode();
         res.put("command", command);
-        if (table.getRow(attackerX).isEmpty() || table.getRow(attackerX).size() - 1 < attackerY)
+        if (table.getRow(attackerX).isEmpty() || table.getRow(attackerX).size() - 1 < attackerY) {
             return;
+        }
         Minion attacker = table.getCardAt(attackerX, attackerY);
         int attackerOwner, attackedOwner;
         if (attackerX == 0 || attackerX == 1) {
             attackerOwner = 2;
-        } else attackerOwner = 1;
+        } else {
+            attackerOwner = 1;
+        }
 
         if (attackedX == 2 || attackedX == 3) {
             attackedOwner = 1;
-        } else attackedOwner = 2;
-        if (table.getRow(attackedX).isEmpty() || table.getRow(attackedX).size() - 1 < attackedY)
+        } else {
+            attackedOwner = 2;
+        }
+        if (table.getRow(attackedX).isEmpty() || table.getRow(attackedX).size() - 1 < attackedY) {
             return;
+        }
         Minion attacked = table.getCardAt(attackedX, attackedY);
 
         //  Validate for frozen minion
@@ -84,7 +90,7 @@ public class CardUsesAbility extends AbstractAction {
             }
         }
         attacker.setActed(true);
-        switch(attacker.getName()) {
+        switch (attacker.getName()) {
             case "Disciple" -> attacked.setHealth(attacked.getHealth() + 2);
             case "Miraj" -> {
                 int aux = attacker.getHealth();
@@ -99,7 +105,7 @@ public class CardUsesAbility extends AbstractAction {
                     table.getRow(attackedX).remove(attackedY);
                 }
             }
-            case "The Ripper" -> attacked.setAttackDamage(Math.max(0, attacked.getAttackDamage() - 2));
+            default -> attacked.setAttackDamage(Math.max(0, attacked.getAttackDamage() - 2));
         }
     }
 }

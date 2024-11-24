@@ -1,20 +1,17 @@
 package org.poo.game;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
+
 import lombok.Getter;
 import lombok.Setter;
 import org.poo.actions.*;
 import org.poo.actions.AbstractAction;
 import org.poo.cards.Hero;
-import org.poo.cards.Minion;
 import org.poo.fileio.ActionsInput;
 import org.poo.fileio.StartGameInput;
 import org.poo.players.Deck;
 import org.poo.players.Player;
 
-import javax.swing.*;
 import java.util.ArrayList;
 
 @Getter
@@ -67,10 +64,18 @@ public final class Game {
         outputArray = out;
     }
 
+    /**
+     * Obtain the current turn's player
+     * @return The player who acts in the current turn
+     */
     public Player getCurrentPlayer() {
         return playerTurn == 1 ? p1 : p2;
     }
 
+    /**
+     * Creates the queue of actions in the current game
+     * @param al The list of ActionInput which describe the actions the game must do
+     */
     public void setActions(ArrayList<ActionsInput> al) {
         ArrayList<AbstractAction> res = new ArrayList<>();
         for (ActionsInput a : al) {
@@ -94,6 +99,9 @@ public final class Game {
         actions = res;
     }
 
+    /**
+     * Executes the actions in the current game
+     */
     public void executeActions() {
         for (AbstractAction action : actions) {
             action.executeAction();
@@ -109,12 +117,18 @@ public final class Game {
         return playerIdx == 1 ? p1Deck : p2Deck;
     }
 
-
+    /**
+     * Obtain the hero card of the requested player
+     * @param idx The identity of the owner of the hero
+     * @return The hero of the desired player
+     */
     public Hero getPlayerHero(final int idx) {
         return idx == 1 ? p1Hero : p2Hero;
     }
 
-
+    /**
+     * Prepares the next turn and, respectively, round of the game
+     */
     public void nextTurn() {
         switchPlayerTurn();
         Table.newRound();
@@ -129,6 +143,11 @@ public final class Game {
         }
     }
 
+    /**
+     * Obtain the player based on the given identity
+     * @param idx The identity of the desired player (1 or 2)
+     * @return The player that matches the identity
+     */
     public Player getPlayer(final int idx) {
         return idx == 1 ? p1 : p2;
     }

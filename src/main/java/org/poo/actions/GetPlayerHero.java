@@ -3,13 +3,12 @@ package org.poo.actions;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import org.poo.cards.Hero;
 import org.poo.fileio.ActionsInput;
 import org.poo.game.Game;
 
-public class GetPlayerHero extends AbstractAction {
-    public GetPlayerHero(ActionsInput actionsInput, final Game g, ArrayNode output) {
-        super(actionsInput, g, output);
+public final class GetPlayerHero extends AbstractAction {
+    public GetPlayerHero(final ActionsInput actionsInput, final Game g, final ArrayNode out) {
+        super(actionsInput, g, out);
     }
 
     @Override

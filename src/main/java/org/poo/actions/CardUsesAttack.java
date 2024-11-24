@@ -8,13 +8,9 @@ import org.poo.fileio.ActionsInput;
 import org.poo.game.Game;
 import org.poo.game.Table;
 
-import javax.swing.*;
-import java.sql.PreparedStatement;
-import java.util.ArrayList;
-
-public class CardUsesAttack extends AbstractAction {
-    public CardUsesAttack(ActionsInput actionsInput, Game game, ArrayNode output) {
-        super(actionsInput, game, output);
+public final class CardUsesAttack extends AbstractAction {
+    public CardUsesAttack(final ActionsInput actionsInput, final Game game, final ArrayNode out) {
+        super(actionsInput, game, out);
     }
 
     @Override
@@ -23,19 +19,25 @@ public class CardUsesAttack extends AbstractAction {
         ObjectMapper mapper = new ObjectMapper();
         ObjectNode res = mapper.createObjectNode();
         res.put("command", command);
-        if (table.getRow(attackerX).isEmpty() || table.getRow(attackerX).size() - 1 < attackerY)
+        if (table.getRow(attackerX).isEmpty() || table.getRow(attackerX).size() - 1 < attackerY) {
             return;
+        }
         Minion attacker = table.getCardAt(attackerX, attackerY);
         int attackerOwner, attackedOwner;
         if (attackerX == 0 || attackerX == 1) {
             attackerOwner = 2;
-        } else attackerOwner = 1;
+        } else {
+            attackerOwner = 1;
+        }
 
         if (attackedX == 2 || attackedX == 3) {
             attackedOwner = 1;
-        } else attackedOwner = 2;
-        if (table.getRow(attackedX).isEmpty() || table.getRow(attackedX).size() - 1 < attackedY)
+        } else {
+            attackedOwner = 2;
+        }
+        if (table.getRow(attackedX).isEmpty() || table.getRow(attackedX).size() - 1 < attackedY) {
             return;
+        }
         Minion attacked = table.getCardAt(attackedX, attackedY);
 
         //  Validate for team damage

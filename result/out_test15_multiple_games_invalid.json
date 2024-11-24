@@ -322,12 +322,12 @@
 }, {
   "command" : "cardUsesAttack",
   "cardAttacker" : {
-    "x" : 3,
-    "y" : 1
+    "x" : 0,
+    "y" : 0
   },
   "cardAttacked" : {
-    "x" : 1,
-    "y" : 1
+    "x" : 0,
+    "y" : 0
   },
   "error" : "Attacked card is not of type 'Tank'."
 }, {
@@ -357,12 +357,12 @@
 }, {
   "command" : "cardUsesAttack",
   "cardAttacker" : {
-    "x" : 3,
-    "y" : 2
+    "x" : 0,
+    "y" : 0
   },
   "cardAttacked" : {
-    "x" : 1,
-    "y" : 1
+    "x" : 0,
+    "y" : 0
   },
   "error" : "Attacked card is not of type 'Tank'."
 }, {
@@ -383,7 +383,7 @@
   "command" : "getCardAtPosition",
   "output" : {
     "mana" : 2,
-    "attackDamage" : 7,
+    "attackDamage" : 5,
     "health" : 5,
     "description" : "Premium card: You shall not pass, you shall not prevail, you shall perish.",
     "colors" : [ "Black", "White", "Green" ],
@@ -397,12 +397,12 @@
 }, {
   "command" : "cardUsesAttack",
   "cardAttacker" : {
-    "x" : 2,
+    "x" : 0,
     "y" : 0
   },
   "cardAttacked" : {
-    "x" : 1,
-    "y" : 1
+    "x" : 0,
+    "y" : 0
   },
   "error" : "Attacked card is not of type 'Tank'."
 }, {
@@ -443,7 +443,7 @@
   "command" : "getCardAtPosition",
   "output" : {
     "mana" : 2,
-    "attackDamage" : 7,
+    "attackDamage" : 1,
     "health" : 7,
     "description" : "Premium card: You shall not pass, you shall not prevail, you shall perish.",
     "colors" : [ "Black", "White", "Green" ],
@@ -466,7 +466,7 @@
   "command" : "getCardAtPosition",
   "output" : {
     "mana" : 2,
-    "attackDamage" : 7,
+    "attackDamage" : 1,
     "health" : 9,
     "description" : "Premium card: You shall not pass, you shall not prevail, you shall perish.",
     "colors" : [ "Black", "White", "Green" ],
@@ -481,12 +481,12 @@
 }, {
   "command" : "cardUsesAbility",
   "cardAttacker" : {
-    "x" : 3,
-    "y" : 4
+    "x" : 0,
+    "y" : 0
   },
   "cardAttacked" : {
-    "x" : 1,
-    "y" : 1
+    "x" : 0,
+    "y" : 0
   },
   "error" : "Attacked card is not of type 'Tank'."
 }, {
@@ -502,7 +502,7 @@
   "command" : "getCardAtPosition",
   "output" : {
     "mana" : 2,
-    "attackDamage" : 7,
+    "attackDamage" : 1,
     "health" : 9,
     "description" : "Premium card: You shall not pass, you shall not prevail, you shall perish.",
     "colors" : [ "Black", "White", "Green" ],
@@ -530,12 +530,12 @@
 }, {
   "command" : "cardUsesAttack",
   "cardAttacker" : {
-    "x" : 2,
-    "y" : 1
+    "x" : 0,
+    "y" : 0
   },
   "cardAttacked" : {
-    "x" : 1,
-    "y" : 1
+    "x" : 0,
+    "y" : 0
   },
   "error" : "Attacked card is not of type 'Tank'."
 }, {
@@ -550,7 +550,7 @@
   "command" : "getCardAtPosition",
   "output" : {
     "mana" : 2,
-    "attackDamage" : 7,
+    "attackDamage" : 1,
     "health" : 9,
     "description" : "Premium card: You shall not pass, you shall not prevail, you shall perish.",
     "colors" : [ "Black", "White", "Green" ],
@@ -584,7 +584,7 @@
     "name" : "Miraj"
   } ], [ {
     "mana" : 2,
-    "attackDamage" : 7,
+    "attackDamage" : 1,
     "health" : 9,
     "description" : "Premium card: You shall not pass, you shall not prevail, you shall perish.",
     "colors" : [ "Black", "White", "Green" ],
