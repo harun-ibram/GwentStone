@@ -66,14 +66,7 @@ public class CardUsesAttack extends AbstractAction {
         }
 
         //  Validate for tank in front line
-        ArrayList<Minion> tanks = new ArrayList<>();
-        int frontLines = attackedOwner == 1 ? 2 : 1;
-        for (Minion minion : table.getRow(frontLines)) {
-            if (minion.isTank()) {
-                tanks.add(minion);
-            }
-        }
-        if (!tanks.isEmpty() && !attacked.isTank()) {
+        if (table.gotTanks(attackedOwner) && !attacked.isTank()) {
             res.set("cardAttacker", cardCoordsOutput(attackerX, attackerY));
             res.set("cardAttacked", cardCoordsOutput(attackedX, attackedY));
             res.put("error", "Attacked card is not of type 'Tank'.");
@@ -86,13 +79,5 @@ public class CardUsesAttack extends AbstractAction {
         if (attacked.getHealth() <= 0) {
             table.getRow(attackedX).remove(attackedY);
         }
-    }
-
-    private ObjectNode cardCoordsOutput(final int x, final int y) {
-        ObjectMapper mapper = new ObjectMapper();
-        ObjectNode res = mapper.createObjectNode();
-        res.put("x", x);
-        res.put("y", y);
-        return res;
     }
 }

@@ -85,6 +85,7 @@ public final class Game {
                 case "getPlayerMana" -> res.add(new GetPlayerMana(a, this, outputArray));
                 case "cardUsesAttack" -> res.add(new CardUsesAttack(a, this, outputArray));
                 case "getCardAtPosition" -> res.add(new GetCardAtPosition(a, this, outputArray));
+                case "cardUsesAbility" -> res.add(new CardUsesAbility(a, this, outputArray));
                 default -> {
                     continue;
                 }

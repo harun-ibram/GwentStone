@@ -174,7 +174,7 @@
   } ], [ {
     "mana" : 1,
     "attackDamage" : 6,
-    "health" : 3,
+    "health" : 1,
     "description" : "Premium card: Insanity is always an option, now it is an absolute.",
     "colors" : [ "Red", "Black" ],
     "name" : "Miraj"
@@ -188,7 +188,7 @@
   }, {
     "mana" : 2,
     "attackDamage" : 6,
-    "health" : 3,
+    "health" : 2,
     "description" : "Standard card: When he is near, close your eyes. They betray your mind.",
     "colors" : [ "Yellow", "Orange", "Red" ],
     "name" : "Miraj"
@@ -444,7 +444,7 @@
   "output" : {
     "mana" : 2,
     "attackDamage" : 7,
-    "health" : 5,
+    "health" : 7,
     "description" : "Premium card: You shall not pass, you shall not prevail, you shall perish.",
     "colors" : [ "Black", "White", "Green" ],
     "name" : "Warden"
@@ -467,7 +467,7 @@
   "output" : {
     "mana" : 2,
     "attackDamage" : 7,
-    "health" : 5,
+    "health" : 9,
     "description" : "Premium card: You shall not pass, you shall not prevail, you shall perish.",
     "colors" : [ "Black", "White", "Green" ],
     "name" : "Warden"
@@ -478,6 +478,17 @@
   "command" : "getPlayerMana",
   "playerIdx" : 1,
   "output" : 62
+}, {
+  "command" : "cardUsesAbility",
+  "cardAttacker" : {
+    "x" : 3,
+    "y" : 4
+  },
+  "cardAttacked" : {
+    "x" : 1,
+    "y" : 1
+  },
+  "error" : "Attacked card is not of type 'Tank'."
 }, {
   "command" : "getCardAtPosition",
   "output" : "No card available at that position.",
@@ -492,7 +503,7 @@
   "output" : {
     "mana" : 2,
     "attackDamage" : 7,
-    "health" : 5,
+    "health" : 9,
     "description" : "Premium card: You shall not pass, you shall not prevail, you shall perish.",
     "colors" : [ "Black", "White", "Green" ],
     "name" : "Warden"
@@ -540,7 +551,7 @@
   "output" : {
     "mana" : 2,
     "attackDamage" : 7,
-    "health" : 5,
+    "health" : 9,
     "description" : "Premium card: You shall not pass, you shall not prevail, you shall perish.",
     "colors" : [ "Black", "White", "Green" ],
     "name" : "Warden"
@@ -574,7 +585,7 @@
   } ], [ {
     "mana" : 2,
     "attackDamage" : 7,
-    "health" : 5,
+    "health" : 9,
     "description" : "Premium card: You shall not pass, you shall not prevail, you shall perish.",
     "colors" : [ "Black", "White", "Green" ],
     "name" : "Warden"

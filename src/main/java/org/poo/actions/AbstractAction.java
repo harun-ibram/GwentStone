@@ -42,4 +42,12 @@ public abstract class AbstractAction implements ExecuteAction {
         state = game;
         outputArray = output;
     }
+
+    protected ObjectNode cardCoordsOutput(final int x, final int y) {
+        ObjectMapper mapper = new ObjectMapper();
+        ObjectNode res = mapper.createObjectNode();
+        res.put("x", x);
+        res.put("y", y);
+        return res;
+    }
 }

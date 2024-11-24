@@ -98,4 +98,15 @@ public class Table {
             }
         }
     }
+
+    public boolean gotTanks(final int attackedOwner) {
+        ArrayList<Minion> tanks = new ArrayList<>();
+        int frontLines = attackedOwner == 1 ? 2 : 1;
+        for (Minion minion : getRow(frontLines)) {
+            if (minion.isTank()) {
+                tanks.add(minion);
+            }
+        }
+        return !tanks.isEmpty();
+    }
 }
