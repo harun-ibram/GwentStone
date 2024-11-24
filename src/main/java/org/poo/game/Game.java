@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.Getter;
 import lombok.Setter;
 import org.poo.actions.*;
+import org.poo.actions.AbstractAction;
 import org.poo.cards.Hero;
 import org.poo.cards.Minion;
 import org.poo.fileio.ActionsInput;
@@ -13,6 +14,7 @@ import org.poo.fileio.StartGameInput;
 import org.poo.players.Deck;
 import org.poo.players.Player;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 @Getter
@@ -30,7 +32,7 @@ public final class Game {
     private ArrayNode outputArray;
     private int manaGain = 1;
     private int rounds = 0;
-    private int turnCount = 1;
+    private int turnCount = 0;
 
     /**
      * Switches the turn of the players.
@@ -80,6 +82,7 @@ public final class Game {
                 case "getCardsOnTable" -> res.add(new GetCardsOnTable(a, this, outputArray));
                 case "placeCard" -> res.add(new PlaceCard(a, this, outputArray));
                 case "getCardsInHand" -> res.add(new GetCardsInHand(a, this, outputArray));
+                case "getPlayerMana" -> res.add(new GetPlayerMana(a, this, outputArray));
                 default -> {
                     continue;
                 }
@@ -113,12 +116,13 @@ public final class Game {
         switchPlayerTurn();
         if (turnCount >= 2) {
             turnCount = 0;
-            manaGain = Math.min(10, getManaGain() + 1);
             rounds = rounds + 1;
             p1.draw(p1Deck);
             p2.draw(p2Deck);
+            manaGain = Math.min(10, getManaGain() + 1);
             p1.setMana(p1.getMana() + manaGain);
             p2.setMana(p2.getMana() + manaGain);
+            Table.newRound();
         }
     }
 

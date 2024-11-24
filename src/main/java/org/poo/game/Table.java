@@ -40,6 +40,9 @@ public class Table {
         return table.get(y).get(x);
     }
 
+    public ArrayList<Minion> getRow(final int row) {
+        return table.get(row);
+    }
     /**
      *
      * @param minion
@@ -82,6 +85,16 @@ public class Table {
         } else {
             for (ArrayList<Minion> row : table) {
                 row.clear();
+            }
+        }
+    }
+
+    public static void newRound() {
+        if (instance == null)
+            return;
+        for (ArrayList<Minion> rows : table) {
+            for (Minion minion : rows) {
+                minion.setActed(false);
             }
         }
     }

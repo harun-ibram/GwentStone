@@ -13,8 +13,9 @@ public class Minion extends GeneralCard {
     private boolean isTank;
     private boolean isFrozen;
     private int attackDamage;
-    private Coordinates coordinates;
-
+    private int x;
+    private int y;
+    private boolean acted;
     public Minion(final CardInput card) {
         mana = card.getMana();
         health = card.getHealth();
@@ -24,9 +25,9 @@ public class Minion extends GeneralCard {
         attackDamage = card.getAttackDamage();
         isFrozen = false;
         isTank = false;
-        coordinates = new Coordinates();
-        coordinates.setX(-1);
-        coordinates.setY(-1);
+        x = -1;
+        y = -1;
+        acted = false;
     }
 
     public Minion(final Minion original) {
@@ -38,16 +39,9 @@ public class Minion extends GeneralCard {
         attackDamage = original.getAttackDamage();
         isFrozen = false;
         isTank = false;
-        coordinates = new Coordinates();
-        coordinates.setX(-1);
-        coordinates.setY(-1);
-    }
-    /**
-     * Attacks the target using attackDamage.
-     * @param target The target of the attack.
-     */
-    public void attack(final GeneralCard target) {
-
+        x = -1;
+        y = -1;
+        acted = false;
     }
 
     @Override
