@@ -9,6 +9,7 @@ import org.poo.game.Game;
 import org.poo.game.Table;
 
 import javax.swing.*;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 
 public class CardUsesAttack extends AbstractAction {
@@ -22,7 +23,9 @@ public class CardUsesAttack extends AbstractAction {
         ObjectMapper mapper = new ObjectMapper();
         ObjectNode res = mapper.createObjectNode();
         res.put("command", command);
-        Minion attacker = table.getCardAt(attackerY, attackerX);
+        if (table.getRow(attackerX).isEmpty() || table.getRow(attackerX).size() - 1 < attackerY)
+            return;
+        Minion attacker = table.getCardAt(attackerX, attackerY);
         int attackerOwner, attackedOwner;
         if (attackerX == 0 || attackerX == 1) {
             attackerOwner = 2;
@@ -31,10 +34,14 @@ public class CardUsesAttack extends AbstractAction {
         if (attackedX == 2 || attackedX == 3) {
             attackedOwner = 1;
         } else attackedOwner = 2;
-        Minion attacked = table.getCardAt(attackedY, attackedX);
+        if (table.getRow(attackedX).isEmpty() || table.getRow(attackedX).size() - 1 < attackedY)
+            return;
+        Minion attacked = table.getCardAt(attackedX, attackedY);
 
         //  Validate for team damage
         if (attackedOwner == attackerOwner) {
+            res.set("cardAttacker", cardCoordsOutput(attackerX, attackerY));
+            res.set("cardAttacked", cardCoordsOutput(attackedX, attackedY));
             res.put("error", "Attacked card does not belong to the enemy.");
             outputArray.add(res);
             return;
@@ -42,6 +49,8 @@ public class CardUsesAttack extends AbstractAction {
 
         //  Validate for action in current round
         if (attacker.isActed()) {
+            res.set("cardAttacker", cardCoordsOutput(attackerX, attackerY));
+            res.set("cardAttacked", cardCoordsOutput(attackedX, attackedY));
             res.put("error", "Attacker card has already attacked this turn.");
             outputArray.add(res);
             return;
@@ -49,6 +58,8 @@ public class CardUsesAttack extends AbstractAction {
 
         //  Validate for frozen minion
         if (attacker.isFrozen()) {
+            res.set("cardAttacker", cardCoordsOutput(attackerX, attackerY));
+            res.set("cardAttacked", cardCoordsOutput(attackedX, attackedY));
             res.put("error", "Attacker card is frozen.");
             outputArray.add(res);
             return;
@@ -62,8 +73,10 @@ public class CardUsesAttack extends AbstractAction {
                 tanks.add(minion);
             }
         }
-        if (!tanks.isEmpty() && !tanks.contains(attacked)) {
-            res.put("error", "Attacked card is not of type 'Tank’.");
+        if (!tanks.isEmpty() && !attacked.isTank()) {
+            res.set("cardAttacker", cardCoordsOutput(attackerX, attackerY));
+            res.set("cardAttacked", cardCoordsOutput(attackedX, attackedY));
+            res.put("error", "Attacked card is not of type 'Tank'.");
             outputArray.add(res);
             return;
         }
@@ -73,5 +86,13 @@ public class CardUsesAttack extends AbstractAction {
         if (attacked.getHealth() <= 0) {
             table.getRow(attackedX).remove(attackedY);
         }
+    }
+
+    private ObjectNode cardCoordsOutput(final int x, final int y) {
+        ObjectMapper mapper = new ObjectMapper();
+        ObjectNode res = mapper.createObjectNode();
+        res.put("x", x);
+        res.put("y", y);
+        return res;
     }
 }

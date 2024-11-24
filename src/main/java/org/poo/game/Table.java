@@ -37,7 +37,7 @@ public class Table {
      * @return Minion card at the requested position.
      */
     public Minion getCardAt(final int x, final int y) {
-        return table.get(y).get(x);
+        return table.get(x).get(y);
     }
 
     public ArrayList<Minion> getRow(final int row) {

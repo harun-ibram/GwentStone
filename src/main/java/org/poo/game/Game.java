@@ -83,6 +83,8 @@ public final class Game {
                 case "placeCard" -> res.add(new PlaceCard(a, this, outputArray));
                 case "getCardsInHand" -> res.add(new GetCardsInHand(a, this, outputArray));
                 case "getPlayerMana" -> res.add(new GetPlayerMana(a, this, outputArray));
+                case "cardUsesAttack" -> res.add(new CardUsesAttack(a, this, outputArray));
+                case "getCardAtPosition" -> res.add(new GetCardAtPosition(a, this, outputArray));
                 default -> {
                     continue;
                 }
@@ -114,6 +116,7 @@ public final class Game {
 
     public void nextTurn() {
         switchPlayerTurn();
+        Table.newRound();
         if (turnCount >= 2) {
             turnCount = 0;
             rounds = rounds + 1;
@@ -122,7 +125,6 @@ public final class Game {
             manaGain = Math.min(10, getManaGain() + 1);
             p1.setMana(p1.getMana() + manaGain);
             p2.setMana(p2.getMana() + manaGain);
-            Table.newRound();
         }
     }
 

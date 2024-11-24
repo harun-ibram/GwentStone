@@ -24,7 +24,10 @@ public class Minion extends GeneralCard {
         name = card.getName();
         attackDamage = card.getAttackDamage();
         isFrozen = false;
-        isTank = false;
+        switch (name) {
+            case "Goliath", "Warden" -> isTank = true;
+            default -> isTank = false;
+        }
         x = -1;
         y = -1;
         acted = false;
