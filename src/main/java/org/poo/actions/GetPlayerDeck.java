@@ -4,18 +4,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.fileio.ActionsInput;
+import org.poo.game.Game;
 import org.poo.players.Deck;
 
 public class GetPlayerDeck extends AbstractAction {
-    private Deck deck;
-    public GetPlayerDeck(final ActionsInput actionsInput) {
-        super(actionsInput);
-    }
 
-    public GetPlayerDeck(final ActionsInput actionsInput, final Deck d, final ArrayNode out) {
-        super(actionsInput);
-        deck = d;
-        outputArray = out;
+    public GetPlayerDeck(final ActionsInput actionsInput, final Game g, final ArrayNode out) {
+        super(actionsInput, g, out);
     }
 
     @Override
@@ -23,8 +18,8 @@ public class GetPlayerDeck extends AbstractAction {
         ObjectMapper mapper = new ObjectMapper();
         ObjectNode comm = mapper.createObjectNode();
         comm.put("command", getCommand());
-        comm.put("playerIdx", deck.getOwnerIdx());
-        comm.set("output", deck.prepareOutput());
+        comm.put("playerIdx", getPlayerIdx());
+        comm.set("output", getState().getPlayerDeck(getPlayerIdx()).prepareOutput());
         outputArray.add(comm);
     }
 }

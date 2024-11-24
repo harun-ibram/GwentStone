@@ -72,8 +72,7 @@ public final class Deck {
     * @param shuffleSeed The seed used to shuffle the deck.
     */
     public void shuffleDeck(final int shuffleSeed) {
-        Random random = new Random(shuffleSeed);
-        Collections.shuffle(minions, random);
+        Collections.shuffle(minions, new Random(shuffleSeed));
     }
 
     /**
@@ -82,7 +81,6 @@ public final class Deck {
      */
     public void removeCard(final int idx) {
         minions.remove(idx);
-        nrCardsInDeck--;
     }
 
     /**
@@ -91,10 +89,7 @@ public final class Deck {
      * @return The Minion card at the top of the deck.
      */
     public Minion drawCard() {
-        Minion ret = minions.getFirst();
-        minions.removeFirst();
-        nrCardsInDeck--;
-        return ret;
+        return minions.removeFirst();
     }
 
     public ArrayNode prepareOutput() {

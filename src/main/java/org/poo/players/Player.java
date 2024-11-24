@@ -18,6 +18,7 @@ public class Player {
     private int selfIdx;
     private Hero hero;
     private ArrayList<Minion> cardsInHand;
+    private int mana;
 
     public Player(final DecksInput din, final int selfIdx) {
         nrDecks = din.getNrDecks();
@@ -29,9 +30,12 @@ public class Player {
             decks.add(currentDeck);
         }
         cardsInHand = new ArrayList<>();
+        mana = 0;
     }
 
     public void draw(Deck gameDeck) {
-        cardsInHand.add(gameDeck.drawCard());
+        if (gameDeck.getMinions().isEmpty())
+            return;
+        cardsInHand.addLast(gameDeck.drawCard());
     }
 }

@@ -8,6 +8,7 @@ import org.poo.checker.CheckerConstants;
 import org.poo.fileio.GameInput;
 import org.poo.fileio.Input;
 import org.poo.game.Game;
+import org.poo.game.Table;
 import org.poo.players.Player;
 
 import java.io.File;
@@ -76,6 +77,7 @@ public final class Main {
 
         for (GameInput gin : inputData.getGames()) {
             Game currentGame = new Game();
+            Table.resetTable();
             currentGame.setP1(p1);
             currentGame.setP2(p2);
             currentGame.initGame(gin.getStartGame(), output);

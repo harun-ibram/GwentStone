@@ -1,18 +1,18 @@
 package org.poo.game;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.Getter;
 import lombok.Setter;
-import org.poo.actions.AbstractAction;
-import org.poo.actions.GetPlayerHero;
-import org.poo.actions.GetPlayerTurn;
+import org.poo.actions.*;
 import org.poo.cards.Hero;
 import org.poo.cards.Minion;
 import org.poo.fileio.ActionsInput;
 import org.poo.fileio.StartGameInput;
 import org.poo.players.Deck;
 import org.poo.players.Player;
-import org.poo.actions.GetPlayerDeck;
+
 import java.util.ArrayList;
 
 @Getter
@@ -28,12 +28,18 @@ public final class Game {
     private int shuffleSeed;
     private ArrayList<AbstractAction> actions;
     private ArrayNode outputArray;
+    private int manaGain = 1;
+    private int rounds = 0;
+    private int turnCount = 1;
 
     /**
      * Switches the turn of the players.
      */
-    public void endPlayerTurn() {
-        playerTurn = (playerTurn == 1) ? 2 : 1;
+    public void switchPlayerTurn() {
+        if (playerTurn == 1)
+            playerTurn = 2;
+        else playerTurn = 1;
+        turnCount = turnCount + 1;
     }
 
     /**
@@ -42,6 +48,7 @@ public final class Game {
      * @param sgi The initial parameters used to start the game.
      */
     public void initGame(final StartGameInput sgi, ArrayNode out) {
+        Table t = Table.getInstance();
         playerTurn = sgi.getStartingPlayer();
         shuffleSeed = sgi.getShuffleSeed();
         p1Deck = new Deck(p1.getDecks().get(sgi.getPlayerOneDeckIdx()));
@@ -52,16 +59,27 @@ public final class Game {
         p2Deck.shuffleDeck(shuffleSeed);
         p1.draw(p1Deck);
         p2.draw(p2Deck);
+        p1.setMana(manaGain);
+        p2.setMana(manaGain);
+        rounds = 1;
         outputArray = out;
+    }
+
+    public Player getCurrentPlayer() {
+        return playerTurn == 1 ? p1 : p2;
     }
 
     public void setActions(ArrayList<ActionsInput> al) {
         ArrayList<AbstractAction> res = new ArrayList<>();
         for (ActionsInput a : al) {
             switch (a.getCommand()) {
-                case "getPlayerDeck" -> res.add(new GetPlayerDeck(a, getPlayerDeck(a.getPlayerIdx()), outputArray));
-                case "getPlayerTurn" -> res.add(new GetPlayerTurn(a, playerTurn, outputArray));
-                case "getPlayerHero" -> res.add(new GetPlayerHero(a, getPlayerHero(a.getPlayerIdx()), outputArray));
+                case "getPlayerDeck" -> res.add(new GetPlayerDeck(a, this, outputArray));
+                case "getPlayerTurn" -> res.add(new GetPlayerTurn(a, this, outputArray));
+                case "getPlayerHero" -> res.add(new GetPlayerHero(a, this, outputArray));
+                case "endPlayerTurn" -> res.add(new EndTurn(a, this, outputArray));
+                case "getCardsOnTable" -> res.add(new GetCardsOnTable(a, this, outputArray));
+                case "placeCard" -> res.add(new PlaceCard(a, this, outputArray));
+                case "getCardsInHand" -> res.add(new GetCardsInHand(a, this, outputArray));
                 default -> {
                     continue;
                 }
@@ -85,26 +103,26 @@ public final class Game {
         return playerIdx == 1 ? p1Deck : p2Deck;
     }
 
-    /**
-     * Places the specified card from the hand of the current player.
-     * @param handIdx The index of the card that the player wants to place on the table.
-     */
-    public void placeCard(final int handIdx) {
-        switch (getPlayerTurn()) {
-            case 1 -> {
-                Minion newFighter = p1.getCardsInHand().get(handIdx);
-                p1Deck.removeCard(handIdx);
-
-            }
-            case 2 -> {}
-            default -> {}
-        }
-    }
 
     public Hero getPlayerHero(final int idx) {
         return idx == 1 ? p1Hero : p2Hero;
     }
 
-    //TODO: Some sort of nextTurn() function to get to the next turn
-    //TODO: Add the rest of the possible actions
+
+    public void nextTurn() {
+        switchPlayerTurn();
+        if (turnCount >= 2) {
+            turnCount = 0;
+            manaGain = Math.min(10, getManaGain() + 1);
+            rounds = rounds + 1;
+            p1.draw(p1Deck);
+            p2.draw(p2Deck);
+            p1.setMana(p1.getMana() + manaGain);
+            p2.setMana(p2.getMana() + manaGain);
+        }
+    }
+
+    public Player getPlayer(final int idx) {
+        return idx == 1 ? p1 : p2;
+    }
 }

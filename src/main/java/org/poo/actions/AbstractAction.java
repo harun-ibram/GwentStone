@@ -6,23 +6,25 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.Getter;
 import lombok.Setter;
 import org.poo.fileio.ActionsInput;
+import org.poo.game.Game;
 
 @Getter
 @Setter
 public abstract class AbstractAction implements ExecuteAction {
-    private String command;
-    private int handIdx;
-    private int attackerX;
-    private int attackerY;
-    private int attackedX;
-    private int attackedY;
-    private int affectedRow;
-    private int playerIdx;
-    private int x;
-    private int y;
+    protected String command;
+    protected int handIdx;
+    protected int attackerX;
+    protected int attackerY;
+    protected int attackedX;
+    protected int attackedY;
+    protected int affectedRow;
+    protected int playerIdx;
+    protected int x;
+    protected int y;
     protected ArrayNode outputArray;
+    protected Game state;
 
-    public AbstractAction(final ActionsInput actionsInput) {
+    public AbstractAction(final ActionsInput actionsInput, final Game game, final ArrayNode output) {
         command = actionsInput.getCommand();
         handIdx = actionsInput.getHandIdx();
         if (actionsInput.getCardAttacker() != null) {
@@ -37,5 +39,7 @@ public abstract class AbstractAction implements ExecuteAction {
         playerIdx = actionsInput.getPlayerIdx();
         x = actionsInput.getX();
         y = actionsInput.getY();
+        state = game;
+        outputArray = output;
     }
 }

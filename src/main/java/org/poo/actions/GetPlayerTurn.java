@@ -4,18 +4,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.fileio.ActionsInput;
+import org.poo.game.Game;
 
 public class GetPlayerTurn extends AbstractAction {
-    private int turn;
 
-    public GetPlayerTurn(ActionsInput a) {
-        super(a);
-    }
-
-    public GetPlayerTurn(ActionsInput actionsInput, final int currentTurn, final ArrayNode output) {
-        super(actionsInput);
-        turn = currentTurn;
-        outputArray = output;
+    public GetPlayerTurn(ActionsInput actionsInput, final Game g, final ArrayNode output) {
+        super(actionsInput, g, output);
     }
 
     @Override
@@ -23,7 +17,7 @@ public class GetPlayerTurn extends AbstractAction {
         ObjectMapper mapper = new ObjectMapper();
         ObjectNode comm = mapper.createObjectNode();
         comm.put("command", getCommand());
-        comm.put("output", turn);
+        comm.put("output", getState().getPlayerTurn());
         outputArray.add(comm);
     }
 }
