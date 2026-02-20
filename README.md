@@ -1,7 +1,7 @@
 
 
 # GwentStone
-##### Ibram Harun 324CD - November 2024
+##### Harun Ibram
 
 
 ## Project Structure
