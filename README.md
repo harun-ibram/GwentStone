@@ -1,10 +1,7 @@
 
 
-# Tema POO  - GwentStone
+# GwentStone
 ##### Ibram Harun 324CD - November 2024
-
-
-#### Assignment Link: [https://ocw.cs.pub.ro/courses/poo-ca-cd/teme/tema](https://ocw.cs.pub.ro/courses/poo-ca-cd/teme/tema)
 
 
 ## Project Structure
